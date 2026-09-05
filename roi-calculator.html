@@ -52,6 +52,17 @@
   input[type=text], input[type=email], input[type=tel] { width:100%; background:#101012; border:1px solid var(--line); border-radius:8px; padding:13px; color:var(--bone); }
   form button { grid-column:1 / -1; }
   .message { color:var(--green); font-size:13px; margin:14px 0 0; }
+  .stepper { display:flex; align-items:center; gap:12px; margin:0 0 30px; color:var(--muted); font-size:12px; font-weight:600; }
+  .step { display:flex; align-items:center; gap:8px; }
+  .step-number { width:26px; height:26px; display:grid; place-items:center; border:1px solid var(--line); border-radius:50%; }
+  .step.active { color:var(--bone); }
+  .step.active .step-number { background:var(--gold); border-color:var(--gold); color:var(--black); }
+  .step-line { width:42px; height:1px; background:var(--line); }
+  .step-panel { display:none; }
+  .step-panel.active { display:block; }
+  .step-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:28px; }
+  .button-secondary { background:transparent; color:var(--muted); border:1px solid var(--line); }
+  .button-secondary:hover { background:transparent; color:var(--bone); border-color:var(--bone); }
   @media (max-width:800px) { .grid { grid-template-columns:1fr; } main { padding:48px 0; } }
   @media (max-width:520px) { .shell { width:min(100% - 32px, 1180px); } .metrics, form { grid-template-columns:1fr; } form button { grid-column:auto; } }
 </style>
@@ -65,11 +76,20 @@
   <p class="eyebrow">For the Overseas Investor</p>
   <h1>Model your return before you commit.</h1>
   <p class="intro">Compare a fixed deposit against a residence at Armani Hallson KLCC. Adjust the investment amount and holding period to see the projection.</p>
-  <div class="grid">
+  <div class="stepper" aria-label="Calculator progress">
+    <div class="step active" id="stepIndicator1"><span class="step-number">1</span><span>Investment details</span></div>
+    <span class="step-line"></span>
+    <div class="step" id="stepIndicator2"><span class="step-number">2</span><span>Your projection</span></div>
+  </div>
+  <div class="step-panel active" id="step1">
     <section class="card">
       <div class="field"><label for="capital">Investment Amount <output id="capitalValue">Rs 2.50 Cr</output></label><input id="capital" type="range" min="25000000" max="100000000" value="25000000" step="2500000"><div class="limits"><span>Min: Rs 2.5 Cr</span><span>Max: Rs 10 Cr</span></div></div>
       <div class="field"><label for="horizon">Holding Period <output id="horizonValue">5 Years</output></label><input id="horizon" type="range" min="1" max="10" value="5"><div class="limits"><span>1 Year</span><span>10 Years</span></div></div>
+      <div class="step-actions"><span></span><button id="nextButton" type="button">See My Projection</button></div>
     </section>
+  </div>
+  <div class="step-panel" id="step2">
+    <div class="grid">
     <section class="card">
       <div class="chart-head"><span>Investment Growth Projection</span><span class="legend"><span><i class="dot fd"></i>Fixed Deposit</span><span><i class="dot property"></i>Property</span></span></div>
       <canvas id="chart"></canvas>
@@ -77,6 +97,8 @@
       <div class="card lead"><div><strong id="spread">Rs 0 additional potential</strong><p>Get the detailed projection by email or WhatsApp.</p></div><button id="reportButton" type="button">Get ROI Report</button></div>
       <div class="form-wrap card" id="formWrap"><form id="roiForm"><input required id="name" type="text" placeholder="Full name"><input required id="email" type="email" placeholder="Email address"><input required id="phone" type="tel" placeholder="WhatsApp number"><button type="submit">Send My Report Request</button></form><p class="message" id="message"></p></div>
     </section>
+    </div>
+    <div class="step-actions"><button id="backButton" class="button-secondary" type="button">Back to Details</button><span></span></div>
   </div>
 </main>
 <script>
@@ -103,6 +125,14 @@ function draw(fd, property, years) {
   line(fd, '#C97B7B'); line(property, '#7FA98A'); ctx.fillStyle = '#B9B6AE'; ctx.textAlign = 'center'; for (let i = 0; i <= years; i++) ctx.fillText(i ? 'Yr ' + i : 'Start', point(i, min).x, height - 13);
 }
 capital.addEventListener('input', simulate); horizon.addEventListener('input', simulate); window.addEventListener('resize', simulate); document.getElementById('reportButton').addEventListener('click', () => document.getElementById('formWrap').classList.add('visible'));
+function showStep(stepNumber) {
+  document.querySelectorAll('.step-panel').forEach(panel => panel.classList.toggle('active', panel.id === 'step' + stepNumber));
+  document.getElementById('stepIndicator1').classList.toggle('active', stepNumber === 1);
+  document.getElementById('stepIndicator2').classList.toggle('active', stepNumber === 2);
+  if (stepNumber === 2) { simulate(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+}
+document.getElementById('nextButton').addEventListener('click', () => showStep(2));
+document.getElementById('backButton').addEventListener('click', () => showStep(1));
 document.getElementById('roiForm').addEventListener('submit', async event => { event.preventDefault(); const button = event.currentTarget.querySelector('button'); button.disabled = true; button.textContent = 'Sending...'; const data = new URLSearchParams({ formType:'ROI Report', name:document.getElementById('name').value, email:document.getElementById('email').value, phone:document.getElementById('phone').value, budget:crores(Number(capital.value)), goal:'ROI calculator request', consent:'Agreed' }); await fetch(endpoint, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body:data.toString() }); window.location.href = './thank-you'; });
 simulate();
 </script>
