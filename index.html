@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="image" href="./bg-optimized.jpg" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script>
@@ -26,8 +26,8 @@
           rose: '#C97B7B',
         },
         fontFamily: {
-          serif: ['"Cormorant Garamond"', 'serif'],
-          sans: ['Inter', 'sans-serif'],
+          serif: ['Space Grotesk', 'sans-serif'],
+          sans: ['Space Grotesk', 'sans-serif'],
         },
       },
     },
@@ -48,7 +48,7 @@
   }
   .page-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
   .page-loader-mark { text-align: center; }
-  .page-loader-name { color: #F2EFEA; font: 600 2rem/1 'Cormorant Garamond', serif; letter-spacing: 0.03em; }
+  .page-loader-name { color: #F2EFEA; font: 600 2rem/1 'Space Grotesk', sans-serif; letter-spacing: 0.03em; }
   .page-loader-name span { color: #C9A24B; }
   .page-loader-bar { width: 130px; height: 2px; margin: 18px auto 0; overflow: hidden; background: #2A2A2E; }
   .page-loader-bar::after { content: ''; display: block; width: 45%; height: 100%; background: #C9A24B; animation: loader-slide 1s ease-in-out infinite; }
@@ -144,7 +144,7 @@
     --roi-gold: #C9A24B;
     --roi-fd: #C97B7B;
     --roi-my: #7FA98A;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: var(--roi-text-main);
   }
   .roi-wrap * { box-sizing: border-box; }
@@ -167,7 +167,7 @@
   .roi-input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
   .roi-slider-header { display: flex; justify-content: space-between; align-items: baseline; }
   .roi-slider-label { font-size: 13px; font-weight: 600; color: var(--roi-text-muted); }
-  .roi-slider-val { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--roi-gold); }
+  .roi-slider-val { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--roi-gold); }
 
   .roi-wrap input[type="range"] {
     -webkit-appearance: none;
@@ -196,7 +196,7 @@
   .roi-badges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   @media (max-width: 480px) { .roi-badges-grid { grid-template-columns: 1fr 1fr; } }
   .roi-badge-item { background: #101012; border: 1px solid var(--roi-border); padding: 10px; border-radius: 8px; font-size: 10.5px; color: var(--roi-text-muted); }
-  .roi-badge-item span { display: block; color: var(--roi-text-main); font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 15px; margin-top: 3px; }
+  .roi-badge-item span { display: block; color: var(--roi-text-main); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; margin-top: 3px; }
 
   .roi-chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
   .roi-chart-title { font-size: 13px; font-weight: 600; color: var(--roi-text-muted); }
@@ -221,7 +221,7 @@
   @media (max-width: 576px) { .roi-metrics-grid { grid-template-columns: 1fr; } }
   .roi-metric-box { background: #101012; border: 1px solid var(--roi-border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
   .roi-metric-hdr { font-size: 12px; font-weight: 600; color: var(--roi-text-muted); }
-  .roi-metric-val { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; }
+  .roi-metric-val { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; }
   .roi-metric-box.fd .roi-metric-val { color: var(--roi-fd); }
   .roi-metric-box.my .roi-metric-val { color: var(--roi-my); }
   .roi-metric-sub { font-size: 11.5px; color: var(--roi-text-muted); line-height: 1.4; }
@@ -238,7 +238,7 @@
     gap: 18px;
     flex-wrap: wrap;
   }
-  .roi-rescue-headline { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--roi-text-main); }
+  .roi-rescue-headline { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--roi-text-main); }
   .roi-rescue-desc { font-size: 13px; color: var(--roi-text-muted); margin-top: 4px; max-width: 420px; }
 
   /* Modal */
@@ -262,7 +262,7 @@
   .roi-modal-close:hover { border-color: #C9A24B; color: #F2EFEA; }
   .roi-wizard-header { padding: 28px 28px 18px; background: #101012; border-bottom: 1px solid #2A2A2E; }
   .roi-wizard-step-indicator { font-size: 11px; font-weight: 600; color: #C9A24B; letter-spacing: 0.06em; text-transform: uppercase; }
-  .roi-wizard-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #F2EFEA; margin-top: 6px; }
+  .roi-wizard-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #F2EFEA; margin-top: 6px; }
   .roi-wizard-progress-bar { height: 4px; background: #2A2A2E; border-radius: 3px; margin-top: 14px; overflow: hidden; }
   .roi-wizard-progress-fill { height: 100%; width: 33.33%; background: #C9A24B; transition: width 0.3s ease; }
   .roi-wizard-body { padding: 28px; min-height: 280px; }
@@ -306,7 +306,7 @@
   .roi-success-state { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
   .roi-success-circle { width: 62px; height: 62px; background: rgba(127,169,138,0.1); border: 2px solid #7FA98A; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #7FA98A; }
   .roi-success-circle svg { width: 30px; height: 30px; fill: currentColor; }
-  .roi-success-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: #F2EFEA; }
+  .roi-success-title { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #F2EFEA; }
   .roi-success-text { font-size: 13px; color: #B9B6AE; line-height: 1.5; max-width: 380px; }
   .roi-next-steps { background: #101012; border: 1px solid #2A2A2E; border-radius: 10px; padding: 18px; width: 100%; text-align: left; margin-top: 6px; display: flex; flex-direction: column; gap: 12px; }
   .roi-next-step-item { display: flex; gap: 12px; font-size: 13px; align-items: center; }
@@ -341,7 +341,7 @@
 <section id="top" class="relative min-h-screen flex items-end hero-media pt-20">
   <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-24 w-full">
     <p class="text-gold text-sm font-medium mb-5">Jalan Ampang, Kuala Lumpur</p>
-    <h1 class="font-serif text-5xl md:text-7xl leading-[1.05] max-w-3xl text-bone">Elevated luxury at the heart of Kuala Lumpur</h1>
+    <h1 class="font-serif font-bold text-5xl md:text-7xl leading-[1.05] max-w-3xl text-bone">Elevated luxury at the heart of Kuala Lumpur</h1>
     <p class="mt-6 text-bonemuted text-lg max-w-xl leading-relaxed">A residence along the city's most prestigious address, minutes from the Petronas Twin Towers, where every window frames the skyline that defines this city.</p>
     <div class="mt-10 flex flex-wrap gap-4">
       <a href="#register" class="gold-btn font-semibold px-7 py-3.5 rounded-full">Join the Webinar</a>
@@ -353,7 +353,7 @@
 <!-- ============ OVERVIEW ============ -->
 <section id="overview" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
   <div class="grid md:grid-cols-2 gap-14 items-start">
-    <h2 class="font-serif text-4xl md:text-5xl leading-tight text-bone">A rare address, <br/>a rarer view.</h2>
+    <h2 class="font-serif font-bold text-4xl md:text-5xl leading-tight text-bone">A rare address, <br/>a rarer view.</h2>
     <div class="space-y-6 text-bonemuted leading-relaxed text-lg">
       <p>Armani Hallson KLCC sits directly on Jalan Ampang, within walking distance of Suria KLCC, KLCC Park, and the Petronas Twin Towers themselves. It is a short list of buildings in this city that can claim an unobstructed line of sight to the skyline — this is one of them.</p>
       <p>Every residence is designed around that view: floor-to-ceiling glazing, deep balconies, and a material palette of stone, timber and brushed bronze that reads as quiet rather than loud.</p>
@@ -372,7 +372,7 @@
 <section id="location" class="border-t hairline bg-card/40">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
     <p class="text-gold text-sm font-medium mb-4">Location</p>
-    <h2 class="font-serif text-4xl md:text-5xl mb-12 text-bone">Where is the property?</h2>
+    <h2 class="font-serif font-bold text-4xl md:text-5xl mb-12 text-bone">Where is the property?</h2>
     <div class="property-gallery mb-16">
       <img src="./property-pool.jpg" alt="Landscaped pool and gardens at the property" />
       <img src="./property-terrace.jpg" alt="Skyline view from the property terrace" />
@@ -418,7 +418,7 @@
 <!-- ============ AMENITIES ============ -->
 <section id="amenities" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
   <p class="text-gold text-sm font-medium mb-4">The Signature Amenities</p>
-  <h2 class="font-serif text-4xl mb-14 max-w-2xl text-bone">Living, elevated beyond the residence.</h2>
+  <h2 class="font-serif font-bold text-4xl mb-14 max-w-2xl text-bone">Living, elevated beyond the residence.</h2>
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
     <div class="amenity-card rounded-xl p-7 bg-card">
       <i data-lucide="glass-water" class="text-gold w-7 h-7 mb-5"></i>
@@ -446,7 +446,7 @@
 <!-- ============ ROI CALCULATOR ============ -->
 <section id="calculator" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
   <p class="text-gold text-sm font-medium mb-4">For the Overseas Investor</p>
-  <h2 class="font-serif text-4xl mb-3 text-bone">Model your return, before you commit.</h2>
+  <h2 class="font-serif font-bold text-4xl mb-3 text-bone">Model your return, before you commit.</h2>
   <p class="text-bonemuted max-w-2xl mb-12 leading-relaxed">A working comparison for investors weighing a fixed deposit at home against a residence at Armani Hallson KLCC — adjust the figures to your own position.</p>
 
   <div class="roi-wrap">
@@ -523,7 +523,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
     <div>
       <p class="text-gold text-sm font-medium mb-3">Live Property Webinar</p>
-      <h2 class="font-serif text-4xl text-bone mb-3">See the opportunity before you visit.</h2>
+      <h2 class="font-serif font-bold text-4xl text-bone mb-3">See the opportunity before you visit.</h2>
       <p class="text-bonemuted max-w-2xl leading-relaxed">Join our next online presentation for the location story, residence details, and investment outlook.</p>
     </div>
     <a href="#register" class="gold-btn font-semibold px-7 py-3.5 rounded-full whitespace-nowrap">Join the Webinar</a>
@@ -534,7 +534,7 @@
 <section id="register" class="border-t hairline bg-card/40">
   <div class="max-w-4xl mx-auto px-6 lg:px-10 py-28 fade-up">
     <p class="text-gold text-sm font-medium mb-4 text-center">Webinar Registration</p>
-    <h2 class="font-serif text-4xl mb-4 text-center text-bone">Reserve your webinar seat</h2>
+    <h2 class="font-serif font-bold text-4xl mb-4 text-center text-bone">Reserve your webinar seat</h2>
     <p class="text-bonemuted text-center mb-12">Share your details and we will send the webinar access link and joining details.</p>
     <form id="registerForm" class="grid sm:grid-cols-2 gap-5" onsubmit="handleRegister(event)">
       <input required name="name" type="text" placeholder="Full name" class="rounded-lg px-4 py-3.5 text-sm w-full" />
@@ -809,7 +809,7 @@
     ctx.lineWidth = 1;
     ctx.strokeStyle = '#2A2A2E';
     ctx.fillStyle = '#B9B6AE';
-    ctx.font = '11px Inter, sans-serif';
+    ctx.font = '11px Space Grotesk, sans-serif';
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
 
@@ -905,15 +905,15 @@
       ctx.fillStyle = '#151517'; ctx.strokeStyle = '#2A2A2E'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.roundRect(tooltipX, tooltipY, tooltipW, tooltipH, 8); ctx.fill(); ctx.stroke();
 
-      ctx.fillStyle = '#F2EFEA'; ctx.font = 'bold 11px Inter, sans-serif'; ctx.textAlign = 'left';
+      ctx.fillStyle = '#F2EFEA'; ctx.font = 'bold 11px Space Grotesk, sans-serif'; ctx.textAlign = 'left';
       ctx.fillText(`End of Year ${hoverYear}`, tooltipX + 10, tooltipY + 18);
-      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Inter, sans-serif';
+      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Space Grotesk, sans-serif';
       ctx.fillText(`FD:`, tooltipX + 10, tooltipY + 40);
-      ctx.fillStyle = '#C97B7B'; ctx.font = 'bold 11px Inter, sans-serif';
+      ctx.fillStyle = '#C97B7B'; ctx.font = 'bold 11px Space Grotesk, sans-serif';
       ctx.fillText(formatFullCurrency(valFD), tooltipX + 34, tooltipY + 40);
-      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Inter, sans-serif';
+      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Space Grotesk, sans-serif';
       ctx.fillText(`Prop:`, tooltipX + 10, tooltipY + 60);
-      ctx.fillStyle = '#7FA98A'; ctx.font = 'bold 11px Inter, sans-serif';
+      ctx.fillStyle = '#7FA98A'; ctx.font = 'bold 11px Space Grotesk, sans-serif';
       ctx.fillText(formatFullCurrency(valMY), tooltipX + 40, tooltipY + 60);
     }
   }

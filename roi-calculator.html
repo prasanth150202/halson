@@ -6,28 +6,28 @@
 <title>ROI Calculator | Armani Hallson KLCC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root { --black:#0B0B0C; --card:#151517; --line:#2A2A2E; --gold:#C9A24B; --bone:#F2EFEA; --muted:#B9B6AE; --green:#7FA98A; --rose:#C97B7B; }
   * { box-sizing:border-box; }
-  body { margin:0; background:var(--black); color:var(--bone); font-family:Inter,sans-serif; }
+  body { margin:0; background:var(--black); color:var(--bone); font-family:'Space Grotesk',sans-serif; }
   a { color:inherit; text-decoration:none; }
   .shell { width:min(1180px, calc(100% - 48px)); margin:auto; }
   header { border-bottom:1px solid var(--line); padding:22px 0; display:flex; justify-content:space-between; align-items:center; gap:20px; }
-  .brand { font:600 28px/1 'Cormorant Garamond',serif; }
+  .brand { font:600 28px/1 'Space Grotesk',sans-serif; }
   .brand span { color:var(--gold); }
   .back { color:var(--muted); font-size:13px; }
   .back:hover { color:var(--bone); }
   main { padding:76px 0; }
   .eyebrow { color:var(--gold); font-size:13px; font-weight:600; margin:0 0 12px; }
-  h1 { font:600 clamp(42px, 7vw, 74px)/.98 'Cormorant Garamond',serif; margin:0 0 18px; max-width:720px; }
+  h1 { font:600 clamp(42px, 7vw, 74px)/.98 'Space Grotesk',sans-serif; margin:0 0 18px; max-width:720px; }
   .intro { color:var(--muted); line-height:1.7; max-width:660px; margin:0 0 42px; }
   .grid { display:grid; grid-template-columns:340px minmax(0,1fr); gap:20px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px; }
   .field { margin-bottom:28px; }
   .field:last-child { margin-bottom:0; }
   label { display:flex; justify-content:space-between; color:var(--muted); font-size:13px; font-weight:600; margin-bottom:12px; }
-  output { color:var(--gold); font:700 25px 'Cormorant Garamond',serif; }
+  output { color:var(--gold); font:700 25px 'Space Grotesk',sans-serif; }
   input[type=range] { width:100%; accent-color:var(--gold); cursor:pointer; }
   .limits { display:flex; justify-content:space-between; color:var(--muted); font-size:11px; margin-top:8px; }
   .chart-head { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; color:var(--muted); font-size:13px; }
@@ -38,12 +38,12 @@
   .metrics { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
   .metric { background:#101012; border:1px solid var(--line); border-radius:10px; padding:18px; }
   .metric-title { color:var(--muted); font-size:12px; }
-  .metric-value { font:700 28px 'Cormorant Garamond',serif; margin-top:6px; }
+  .metric-value { font:700 28px 'Space Grotesk',sans-serif; margin-top:6px; }
   .metric.fd .metric-value { color:var(--rose); } .metric.property .metric-value { color:var(--green); }
   .metric-copy { color:var(--muted); font-size:11px; line-height:1.5; margin-top:5px; }
   .lead { margin-top:18px; border-color:var(--gold); display:flex; justify-content:space-between; gap:18px; align-items:center; flex-wrap:wrap; }
   .lead p { color:var(--muted); font-size:13px; margin:0; }
-  .lead strong { color:var(--bone); display:block; font:700 23px 'Cormorant Garamond',serif; }
+  .lead strong { color:var(--bone); display:block; font:700 23px 'Space Grotesk',sans-serif; }
   button { border:0; border-radius:999px; padding:13px 20px; background:var(--gold); color:var(--black); font-weight:700; cursor:pointer; }
   button:hover { background:#E4C878; }
   .form-wrap { margin-top:20px; display:none; }
@@ -91,7 +91,7 @@
   <div class="step-panel" id="step2">
     <div class="grid">
     <section class="card">
-      <div class="chart-head"><span>Investment Growth Projection</span><span class="legend"><span><i class="dot fd"></i>Fixed Deposit</span><span><i class="dot property"></i>Property</span></span></div>
+      <div class="chart-head"><span>Investment Growth Projection</span><span class="legend"><span><i class="dot fd"></i>Fixed Deposit</span><span><i class="dot property"></i>Hallson</span></span></div>
       <canvas id="chart"></canvas>
       <div class="metrics"><div class="metric fd"><div class="metric-title">Fixed Deposit (Net of Tax)</div><div class="metric-value" id="fdValue">Rs 0</div><div class="metric-copy">After 30% annual tax on interest.</div></div><div class="metric property"><div class="metric-title">Armani Hallson KLCC</div><div class="metric-value" id="propertyValue">Rs 0</div><div class="metric-copy">Property appreciation plus rental income.</div></div></div>
       <div class="card lead"><div><strong id="spread">Rs 0 additional potential</strong><p>Get the detailed projection by email or WhatsApp.</p></div><button id="reportButton" type="button">Get ROI Report</button></div>
@@ -118,7 +118,7 @@ function simulate() {
 }
 function draw(fd, property, years) {
   const ratio = window.devicePixelRatio || 1, rect = canvas.getBoundingClientRect(); canvas.width = rect.width * ratio; canvas.height = rect.height * ratio; const ctx = canvas.getContext('2d'); ctx.scale(ratio, ratio); const width = rect.width, height = rect.height, left = 52, right = 16, top = 20, bottom = 30, graphWidth = width - left - right, graphHeight = height - top - bottom, max = Math.max(...fd, ...property) * 1.06, min = fd[0] * .95;
-  ctx.clearRect(0, 0, width, height); ctx.strokeStyle = '#2A2A2E'; ctx.fillStyle = '#B9B6AE'; ctx.font = '11px Inter';
+  ctx.clearRect(0, 0, width, height); ctx.strokeStyle = '#2A2A2E'; ctx.fillStyle = '#B9B6AE'; ctx.font = '11px Space Grotesk';
   for (let i = 0; i <= 4; i++) { const y = height - bottom - i / 4 * graphHeight; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(width - right, y); ctx.stroke(); ctx.fillText(((min + i / 4 * (max - min)) / 10000000).toFixed(1) + ' Cr', 5, y + 4); }
   function point(index, value) { return { x:left + index / years * graphWidth, y:height - bottom - (value - min) / (max - min) * graphHeight }; }
   function line(values, color) { ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.beginPath(); values.forEach((value, index) => { const p = point(index, value); index ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }); ctx.stroke(); }
