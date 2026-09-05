@@ -533,18 +533,20 @@
 <!-- ============ REGISTRATION ============ -->
 <section id="register" class="border-t hairline bg-card/40">
   <div class="max-w-4xl mx-auto px-6 lg:px-10 py-28 fade-up">
-    <p class="text-gold text-sm font-medium mb-4 text-center">Exclusive Registration</p>
-    <h2 class="font-serif text-4xl mb-4 text-center text-bone">Register your interest</h2>
-    <p class="text-bonemuted text-center mb-12">Leave your details and our sales team will be in touch with the full brochure and pricing.</p>
+    <p class="text-gold text-sm font-medium mb-4 text-center">Webinar Registration</p>
+    <h2 class="font-serif text-4xl mb-4 text-center text-bone">Reserve your webinar seat</h2>
+    <p class="text-bonemuted text-center mb-12">Share your details and we will send the webinar access link and joining details.</p>
     <form id="registerForm" class="grid sm:grid-cols-2 gap-5" onsubmit="handleRegister(event)">
       <input required name="name" type="text" placeholder="Full name" class="rounded-lg px-4 py-3.5 text-sm w-full" />
       <input required name="email" type="email" placeholder="Email address" class="rounded-lg px-4 py-3.5 text-sm w-full" />
-      <input required name="phone" type="tel" placeholder="Phone number" class="rounded-lg px-4 py-3.5 text-sm w-full" />
-      <select required name="unitType" class="rounded-lg px-4 py-3.5 text-sm w-full">
-        <option value="" disabled selected>Preferred unit type</option>
-        <option>Studio</option>
-        <option>2-Bedroom</option>
-        <option>3-Bedroom</option>
+      <input required name="phone" type="tel" placeholder="WhatsApp number" class="rounded-lg px-4 py-3.5 text-sm w-full" />
+      <input required name="location" type="text" placeholder="City / country" class="rounded-lg px-4 py-3.5 text-sm w-full" />
+      <select required name="interest" class="rounded-lg px-4 py-3.5 text-sm w-full">
+        <option value="" disabled selected>What would you like to learn?</option>
+        <option>Property and location overview</option>
+        <option>Investment and rental returns</option>
+        <option>Residence layouts and amenities</option>
+        <option>Booking and purchase process</option>
       </select>
       <button type="submit" class="gold-btn font-semibold px-6 py-3.5 rounded-lg sm:col-span-2">Register for Webinar</button>
     </form>
@@ -691,12 +693,13 @@
     submitButton.innerText = 'Sending...';
 
     await sendLead({
-      formType: 'Registration',
+      formType: 'Webinar Registration',
       name: formData.get('name'),
       email: formData.get('email'),
       phone: formData.get('phone'),
-      unitType: formData.get('unitType'),
-      consent: 'Registration form submitted'
+      unitType: 'Webinar attendee',
+      goal: formData.get('interest') + ' | ' + formData.get('location'),
+      consent: 'Webinar registration submitted'
     });
 
     document.getElementById('registerForm').classList.add('hidden');
