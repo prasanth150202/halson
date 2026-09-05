@@ -22,7 +22,8 @@
   .eyebrow { color:var(--gold); font-size:13px; font-weight:600; margin:0 0 12px; }
   h1 { font:600 clamp(42px, 7vw, 74px)/.98 'Space Grotesk',sans-serif; margin:0 0 18px; max-width:720px; }
   .intro { color:var(--muted); line-height:1.7; max-width:660px; margin:0 0 42px; }
-  .grid { display:grid; grid-template-columns:340px minmax(0,1fr); gap:20px; }
+  .grid { display:grid; grid-template-columns:minmax(0,1fr) 380px; gap:20px; align-items:start; }
+  .sidebar { display:flex; flex-direction:column; gap:20px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px; }
   .field { margin-bottom:28px; }
   .field:last-child { margin-bottom:0; }
@@ -34,8 +35,8 @@
   .legend { display:flex; gap:15px; }
   .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; }
   .dot.fd { background:var(--rose); } .dot.property { background:var(--green); }
-  canvas { display:block; width:100%; height:300px; margin-top:16px; background:#101012; border:1px solid var(--line); border-radius:10px; }
-  .metrics { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
+  canvas { display:block; width:100%; height:320px; margin-top:16px; background:#101012; border:1px solid var(--line); border-radius:10px; }
+  .metrics { display:grid; grid-template-columns:1fr; gap:14px; }
   .metric { background:#101012; border:1px solid var(--line); border-radius:10px; padding:18px; }
   .metric-title { color:var(--muted); font-size:12px; }
   .metric-value { font:700 28px 'Space Grotesk',sans-serif; margin-top:6px; }
@@ -48,9 +49,8 @@
   button:hover { background:#E4C878; }
   .form-wrap { margin-top:20px; display:none; }
   .form-wrap.visible { display:block; }
-  form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  form { display:grid; grid-template-columns:1fr; gap:12px; }
   input[type=text], input[type=email], input[type=tel] { width:100%; background:#101012; border:1px solid var(--line); border-radius:8px; padding:13px; color:var(--bone); }
-  form button { grid-column:1 / -1; }
   .message { color:var(--green); font-size:13px; margin:14px 0 0; }
   .stepper { display:flex; align-items:center; gap:12px; margin:0 0 30px; color:var(--muted); font-size:12px; font-weight:600; }
   .step { display:flex; align-items:center; gap:8px; }
@@ -64,7 +64,7 @@
   .button-secondary { background:transparent; color:var(--muted); border:1px solid var(--line); }
   .button-secondary:hover { background:transparent; color:var(--bone); border-color:var(--bone); }
   @media (max-width:800px) { .grid { grid-template-columns:1fr; } main { padding:48px 0; } }
-  @media (max-width:520px) { .shell { width:min(100% - 32px, 1180px); } .metrics, form { grid-template-columns:1fr; } form button { grid-column:auto; } }
+  @media (max-width:520px) { .shell { width:min(100% - 32px, 1180px); } }
 </style>
 </head>
 <body>
@@ -93,10 +93,12 @@
     <section class="card">
       <div class="chart-head"><span>Investment Growth Projection</span><span class="legend"><span><i class="dot fd"></i>Fixed Deposit</span><span><i class="dot property"></i>Hallson</span></span></div>
       <canvas id="chart"></canvas>
+    </section>
+    <div class="sidebar">
       <div class="metrics"><div class="metric fd"><div class="metric-title">Fixed Deposit (Net of Tax)</div><div class="metric-value" id="fdValue">Rs 0</div><div class="metric-copy">After 30% annual tax on interest.</div></div><div class="metric property"><div class="metric-title">Armani Hallson KLCC</div><div class="metric-value" id="propertyValue">Rs 0</div><div class="metric-copy">Property appreciation plus rental income.</div></div></div>
       <div class="card lead"><div><strong id="spread">Rs 0 additional potential</strong><p>Get the detailed projection by email or WhatsApp.</p></div><button id="reportButton" type="button">Get ROI Report</button></div>
       <div class="form-wrap card" id="formWrap"><form id="roiForm"><input required id="name" type="text" placeholder="Full name"><input required id="email" type="email" placeholder="Email address"><input required id="phone" type="tel" placeholder="WhatsApp number"><button type="submit">Send My Report Request</button></form><p class="message" id="message"></p></div>
-    </section>
+    </div>
     </div>
     <div class="step-actions"><button id="backButton" class="button-secondary" type="button">Back to Details</button><span></span></div>
   </div>
