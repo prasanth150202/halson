@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Armani Hallson KLCC | Jalan Ampang, Kuala Lumpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          obsidian: '#0B0B0C',
+          card: '#151517',
+          hairline: '#2A2A2E',
+          gold: '#C9A24B',
+          goldSoft: '#E4C878',
+          bone: '#F2EFEA',
+          bonemuted: '#B9B6AE',
+          sage: '#7FA98A',
+          rose: '#C97B7B',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: auto; }
+  body { background: #0B0B0C; }
+  ::selection { background: #C9A24B; color: #0B0B0C; }
+
+  .hairline { border-color: #2A2A2E; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .nav-glass {
+    background: rgba(11,11,12,0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero-media {
+    background:
+      linear-gradient(180deg, rgba(11,11,12,0.2) 0%, rgba(11,11,12,0.5) 58%, #0B0B0C 100%),
+      linear-gradient(90deg, rgba(11,11,12,0.62) 0%, rgba(11,11,12,0.18) 62%, rgba(11,11,12,0.35) 100%),
+      url("./bg.png") center / cover no-repeat;
+  }
+
+  .property-gallery {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    gap: 12px;
+  }
+  .property-gallery img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #2A2A2E;
+  }
+  @media (max-width: 768px) {
+    .property-gallery { grid-template-columns: 1fr 1fr; }
+    .property-gallery img:first-child { grid-column: 1 / -1; }
+  }
+
+  .amenity-card {
+    border: 1px solid #2A2A2E;
+    transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .amenity-card:hover {
+    border-color: #C9A24B;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(201,162,75,0.25);
+  }
+
+  input[type="text"], input[type="email"], input[type="tel"] {
+    background: #101012;
+    border: 1px solid #2A2A2E;
+    color: #F2EFEA;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+    outline: none;
+    border-color: #C9A24B;
+  }
+  select {
+    background: #101012;
+    border: 1px solid #2A2A2E;
+    color: #F2EFEA;
+  }
+
+  .gold-btn {
+    background: #C9A24B;
+    color: #0B0B0C;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .gold-btn:hover { background: #E4C878; transform: translateY(-1px); }
+
+  .ghost-btn {
+    border: 1px solid #C9A24B;
+    color: #F2EFEA;
+    transition: all 0.3s ease;
+  }
+  .ghost-btn:hover { background: rgba(201,162,75,0.1); }
+
+  /* ===================== ROI CALCULATOR (retinted to page palette) ===================== */
+  .roi-wrap {
+    --roi-bg-card: #151517;
+    --roi-border: #2A2A2E;
+    --roi-text-main: #F2EFEA;
+    --roi-text-muted: #B9B6AE;
+    --roi-gold: #C9A24B;
+    --roi-fd: #C97B7B;
+    --roi-my: #7FA98A;
+    font-family: 'Inter', sans-serif;
+    color: var(--roi-text-main);
+  }
+  .roi-wrap * { box-sizing: border-box; }
+
+  .roi-card {
+    background: var(--roi-bg-card);
+    border: 1px solid var(--roi-border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  @media (max-width: 640px) { .roi-card { padding: 18px; } }
+
+  .roi-grid {
+    display: grid;
+    grid-template-columns: 380px minmax(0, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 992px) { .roi-grid { grid-template-columns: 1fr; } }
+
+  .roi-input-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .roi-slider-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .roi-slider-label { font-size: 13px; font-weight: 600; color: var(--roi-text-muted); }
+  .roi-slider-val { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--roi-gold); }
+
+  .roi-wrap input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #2A2A2E;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .roi-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--roi-gold);
+    border: 3px solid #0B0B0C;
+    box-shadow: 0 0 0 1px var(--roi-gold);
+  }
+  .roi-slider-limits { display: flex; justify-content: space-between; font-size: 11px; color: var(--roi-text-muted); }
+
+  .roi-benchmarks { border-top: 1px solid var(--roi-border); padding-top: 18px; }
+  .roi-benchmarks-title { font-size: 12px; font-weight: 600; color: var(--roi-text-muted); margin-bottom: 12px; }
+  .roi-badges-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 480px) { .roi-badges-grid { grid-template-columns: 1fr 1fr; } }
+  .roi-badge-item { background: #101012; border: 1px solid var(--roi-border); padding: 10px; border-radius: 8px; font-size: 10.5px; color: var(--roi-text-muted); }
+  .roi-badge-item span { display: block; color: var(--roi-text-main); font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 15px; margin-top: 3px; }
+
+  .roi-chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  .roi-chart-title { font-size: 13px; font-weight: 600; color: var(--roi-text-muted); }
+  .roi-legend { display: flex; gap: 16px; font-size: 12px; font-weight: 500; }
+  .roi-legend-item { display: flex; align-items: center; gap: 6px; }
+  .roi-legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .roi-legend-dot.fd { background: var(--roi-fd); }
+  .roi-legend-dot.my { background: var(--roi-my); }
+
+  .roi-canvas-container {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: #101012;
+    border-radius: 10px;
+    border: 1px solid var(--roi-border);
+    overflow: hidden;
+  }
+  .roi-canvas-container canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+
+  .roi-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+  @media (max-width: 576px) { .roi-metrics-grid { grid-template-columns: 1fr; } }
+  .roi-metric-box { background: #101012; border: 1px solid var(--roi-border); border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+  .roi-metric-hdr { font-size: 12px; font-weight: 600; color: var(--roi-text-muted); }
+  .roi-metric-val { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; }
+  .roi-metric-box.fd .roi-metric-val { color: var(--roi-fd); }
+  .roi-metric-box.my .roi-metric-val { color: var(--roi-my); }
+  .roi-metric-sub { font-size: 11.5px; color: var(--roi-text-muted); line-height: 1.4; }
+
+  .roi-rescue {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #1a1710 0%, #151517 100%);
+    border: 1px solid var(--roi-gold);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .roi-rescue-headline { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--roi-text-main); }
+  .roi-rescue-desc { font-size: 13px; color: var(--roi-text-muted); margin-top: 4px; max-width: 420px; }
+
+  /* Modal */
+  .roi-modal-overlay {
+    position: fixed; inset: 0; background: rgba(11,11,12,0.85); backdrop-filter: blur(8px);
+    z-index: 1000; display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 15px;
+  }
+  .roi-modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .roi-modal-card {
+    background: #151517; border: 1px solid #2A2A2E; border-radius: 16px; width: 100%; max-width: 540px;
+    max-height: 92vh; overflow-y: auto; position: relative; transform: scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .roi-modal-overlay.active .roi-modal-card { transform: scale(1); }
+  .roi-modal-close {
+    position: absolute; top: 18px; right: 18px; background: #101012; border: 1px solid #2A2A2E;
+    width: 32px; height: 32px; border-radius: 50%; color: #B9B6AE; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; z-index: 10;
+  }
+  .roi-modal-close:hover { border-color: #C9A24B; color: #F2EFEA; }
+  .roi-wizard-header { padding: 28px 28px 18px; background: #101012; border-bottom: 1px solid #2A2A2E; }
+  .roi-wizard-step-indicator { font-size: 11px; font-weight: 600; color: #C9A24B; letter-spacing: 0.06em; text-transform: uppercase; }
+  .roi-wizard-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #F2EFEA; margin-top: 6px; }
+  .roi-wizard-progress-bar { height: 4px; background: #2A2A2E; border-radius: 3px; margin-top: 14px; overflow: hidden; }
+  .roi-wizard-progress-fill { height: 100%; width: 33.33%; background: #C9A24B; transition: width 0.3s ease; }
+  .roi-wizard-body { padding: 28px; min-height: 280px; }
+  @media (max-width: 600px) { .roi-wizard-body { padding: 18px; } .roi-wizard-header { padding: 22px 18px 16px; } }
+  .roi-wizard-step { display: none; flex-direction: column; gap: 18px; }
+  .roi-wizard-step.active { display: flex; }
+  .roi-wizard-question { font-size: 15px; font-weight: 500; color: #F2EFEA; line-height: 1.4; }
+  .roi-option-cards { display: flex; flex-direction: column; gap: 10px; }
+  .roi-option-card {
+    background: #101012; border: 1px solid #2A2A2E; border-radius: 10px; padding: 15px;
+    cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;
+  }
+  .roi-option-card:hover { border-color: #C9A24B; }
+  .roi-option-card.selected { background: rgba(201,162,75,0.08); border-color: #C9A24B; }
+  .roi-option-check {
+    width: 20px; height: 20px; border-radius: 50%; border: 2px solid #2A2A2E; display: flex;
+    justify-content: center; align-items: center; flex-shrink: 0; background: #101012;
+  }
+  .roi-option-card.selected .roi-option-check { border-color: #C9A24B; background: #C9A24B; }
+  .roi-option-check svg { width: 11px; height: 11px; fill: #0B0B0C; opacity: 0; transition: opacity 0.2s ease; }
+  .roi-option-card.selected .roi-option-check svg { opacity: 1; }
+  .roi-option-text { font-size: 13.5px; color: #F2EFEA; }
+  .roi-form-group { display: flex; flex-direction: column; gap: 8px; }
+  .roi-form-group label { font-size: 12.5px; font-weight: 600; color: #B9B6AE; }
+  .roi-input-icon-wrap { position: relative; }
+  .roi-input-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; fill: #B9B6AE; pointer-events: none; }
+  .roi-form-input {
+    width: 100%; background: #101012; border: 1px solid #2A2A2E; border-radius: 8px;
+    padding: 13px 13px 13px 40px; color: #F2EFEA; font-size: 13.5px; outline: none; transition: border-color 0.2s ease;
+  }
+  .roi-form-input:focus { border-color: #C9A24B; }
+  .roi-form-error { font-size: 11.5px; color: #C97B7B; margin-top: 2px; display: none; }
+  .roi-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 11.5px; color: #B9B6AE; line-height: 1.5; margin-top: 6px; background: #101012; padding: 12px; border-radius: 8px; border: 1px solid #2A2A2E; }
+  .roi-consent input { margin-top: 3px; cursor: pointer; width: 15px; height: 15px; accent-color: #C9A24B; }
+  .roi-wizard-footer { padding: 18px 28px; background: #101012; border-top: 1px solid #2A2A2E; display: flex; justify-content: space-between; align-items: center; }
+  @media (max-width: 600px) { .roi-wizard-footer { padding: 14px 18px; } }
+  .roi-btn-secondary { background: transparent; color: #B9B6AE; border: 1px solid #2A2A2E; padding: 11px 18px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; }
+  .roi-btn-secondary:hover { border-color: #C9A24B; color: #F2EFEA; }
+  .roi-btn-primary { background: #C9A24B; color: #0B0B0C; border: none; padding: 13px 22px; font-size: 13px; font-weight: 700; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+  .roi-btn-primary:hover { background: #E4C878; transform: translateY(-1px); }
+  .roi-success-state { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
+  .roi-success-circle { width: 62px; height: 62px; background: rgba(127,169,138,0.1); border: 2px solid #7FA98A; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #7FA98A; }
+  .roi-success-circle svg { width: 30px; height: 30px; fill: currentColor; }
+  .roi-success-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: #F2EFEA; }
+  .roi-success-text { font-size: 13px; color: #B9B6AE; line-height: 1.5; max-width: 380px; }
+  .roi-next-steps { background: #101012; border: 1px solid #2A2A2E; border-radius: 10px; padding: 18px; width: 100%; text-align: left; margin-top: 6px; display: flex; flex-direction: column; gap: 12px; }
+  .roi-next-step-item { display: flex; gap: 12px; font-size: 13px; align-items: center; }
+  .roi-next-step-num { width: 22px; height: 22px; background: #C9A24B; color: #0B0B0C; font-weight: 700; font-size: 11px; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
+  .roi-next-step-txt { color: #F2EFEA; }
+</style>
+</head>
+<body class="bg-obsidian text-bone font-sans antialiased">
+
+<!-- ============ NAV ============ -->
+<nav class="nav-glass fixed top-0 left-0 w-full z-50 border-b hairline">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+    <a href="#top" class="font-serif text-2xl tracking-wide text-bone">Armani Hallson <span class="text-gold">KLCC</span></a>
+    <div class="hidden lg:flex items-center gap-9 text-sm text-bonemuted">
+      <a href="#overview" class="hover:text-bone transition">Overview</a>
+      <a href="#location" class="hover:text-bone transition">Location</a>
+      <a href="#amenities" class="hover:text-bone transition">Amenities</a>
+      <a href="#calculator" class="hover:text-bone transition">Investment</a>
+    </div>
+    <a href="#register" class="gold-btn text-sm font-semibold px-5 py-2.5 rounded-full">Book a Private Tour</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-screen flex items-end hero-media pt-20">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pb-24 w-full">
+    <p class="text-gold text-sm font-medium mb-5">Jalan Ampang, Kuala Lumpur</p>
+    <h1 class="font-serif text-5xl md:text-7xl leading-[1.05] max-w-3xl text-bone">Elevated luxury at the heart of Kuala Lumpur</h1>
+    <p class="mt-6 text-bonemuted text-lg max-w-xl leading-relaxed">A residence along the city's most prestigious address, minutes from the Petronas Twin Towers, where every window frames the skyline that defines this city.</p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="#register" class="gold-btn font-semibold px-7 py-3.5 rounded-full">Download Brochure</a>
+      <a href="#register" class="ghost-btn font-semibold px-7 py-3.5 rounded-full">Register Interest</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
+  <div class="grid md:grid-cols-2 gap-14 items-start">
+    <h2 class="font-serif text-4xl md:text-5xl leading-tight text-bone">A rare address, <br/>a rarer view.</h2>
+    <div class="space-y-6 text-bonemuted leading-relaxed text-lg">
+      <p>Armani Hallson KLCC sits directly on Jalan Ampang, within walking distance of Suria KLCC, KLCC Park, and the Petronas Twin Towers themselves. It is a short list of buildings in this city that can claim an unobstructed line of sight to the skyline — this is one of them.</p>
+      <p>Every residence is designed around that view: floor-to-ceiling glazing, deep balconies, and a material palette of stone, timber and brushed bronze that reads as quiet rather than loud.</p>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-10 border-t hairline">
+    <div><p class="font-serif text-4xl text-gold">450+</p><p class="text-sm text-bonemuted mt-1">metres to Petronas Twin Towers</p></div>
+    <div><p class="font-serif text-4xl text-gold">1–3</p><p class="text-sm text-bonemuted mt-1">bedroom layouts available</p></div>
+    <div><p class="font-serif text-4xl text-gold">40+</p><p class="text-sm text-bonemuted mt-1">storeys above Jalan Ampang</p></div>
+    <div><p class="font-serif text-4xl text-gold">24/7</p><p class="text-sm text-bonemuted mt-1">concierge &amp; valet</p></div>
+  </div>
+  <p class="text-xs text-bonemuted/60 mt-6">Figures shown are illustrative placeholders — replace with confirmed specifications before publishing.</p>
+</section>
+
+<!-- ============ LOCATION & VIEWS ============ -->
+<section id="location" class="border-t hairline bg-card/40">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
+    <p class="text-gold text-sm font-medium mb-4">Location</p>
+    <h2 class="font-serif text-4xl md:text-5xl mb-12 text-bone">Where is the property?</h2>
+    <div class="property-gallery mb-16">
+      <img src="./Screenshot 2026-09-05 at 3.42.37 PM.png" alt="Landscaped pool and gardens at the property" />
+      <img src="./Screenshot 2026-09-05 at 3.41.06 PM.png" alt="Skyline view from the property terrace" />
+      <img src="./Screenshot 2026-09-05 at 3.41.48 PM.png" alt="Luxury interior lounge with city views" />
+    </div>
+    <div>
+      <div>
+        <h3 class="font-serif text-3xl mb-8 text-bone">Everything the city offers, within reach.</h3>
+        <ul class="space-y-5" id="landmark-list">
+          <li class="flex items-start gap-4">
+            <i data-lucide="landmark" class="text-gold w-5 h-5 mt-1"></i>
+            <div><p class="text-bone font-medium">Petronas Twin Towers</p><p class="text-bonemuted text-sm">Approx. 6 minute walk</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <i data-lucide="shopping-bag" class="text-gold w-5 h-5 mt-1"></i>
+            <div><p class="text-bone font-medium">Suria KLCC &amp; Avenue K</p><p class="text-bonemuted text-sm">Direct pedestrian access</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <i data-lucide="train-front" class="text-gold w-5 h-5 mt-1"></i>
+            <div><p class="text-bone font-medium">KLCC &amp; Ampang Park stations</p><p class="text-bonemuted text-sm">LRT &amp; MRT connectivity</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <i data-lucide="trees" class="text-gold w-5 h-5 mt-1"></i>
+            <div><p class="text-bone font-medium">KLCC Park</p><p class="text-bonemuted text-sm">20 hectares of green space at your doorstep</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-16">
+      <div class="relative w-full aspect-video overflow-hidden rounded-xl border hairline bg-black">
+        <iframe
+          class="absolute inset-0 w-full h-full"
+          src="https://www.youtube.com/embed/bIeJL8abnkQ?autoplay=1&mute=1&playsinline=1&rel=0"
+          title="Armani Hallson KLCC property video"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMENITIES ============ -->
+<section id="amenities" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
+  <p class="text-gold text-sm font-medium mb-4">The Signature Amenities</p>
+  <h2 class="font-serif text-4xl mb-14 max-w-2xl text-bone">Living, elevated beyond the residence.</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="amenity-card rounded-xl p-7 bg-card">
+      <i data-lucide="glass-water" class="text-gold w-7 h-7 mb-5"></i>
+      <h3 class="font-serif text-xl mb-2 text-bone">Sky Lounge</h3>
+      <p class="text-sm text-bonemuted leading-relaxed">A private lounge on the uppermost floor, framing the Twin Towers from above.</p>
+    </div>
+    <div class="amenity-card rounded-xl p-7 bg-card">
+      <i data-lucide="waves" class="text-gold w-7 h-7 mb-5"></i>
+      <h3 class="font-serif text-xl mb-2 text-bone">Infinity Pool</h3>
+      <p class="text-sm text-bonemuted leading-relaxed">A cantilevered edge pool overlooking the KLCC skyline, lit at dusk.</p>
+    </div>
+    <div class="amenity-card rounded-xl p-7 bg-card">
+      <i data-lucide="dumbbell" class="text-gold w-7 h-7 mb-5"></i>
+      <h3 class="font-serif text-xl mb-2 text-bone">Wellness &amp; Fitness</h3>
+      <p class="text-sm text-bonemuted leading-relaxed">A fully equipped gym, yoga studio, and recovery suite for residents.</p>
+    </div>
+    <div class="amenity-card rounded-xl p-7 bg-card">
+      <i data-lucide="concierge-bell" class="text-gold w-7 h-7 mb-5"></i>
+      <h3 class="font-serif text-xl mb-2 text-bone">24/7 Concierge</h3>
+      <p class="text-sm text-bonemuted leading-relaxed">Dedicated concierge and valet service, day and night.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<section id="calculator" class="max-w-7xl mx-auto px-6 lg:px-10 py-28 fade-up">
+  <p class="text-gold text-sm font-medium mb-4">For the Overseas Investor</p>
+  <h2 class="font-serif text-4xl mb-3 text-bone">Model your return, before you commit.</h2>
+  <p class="text-bonemuted max-w-2xl mb-12 leading-relaxed">A working comparison for investors weighing a fixed deposit at home against a residence at Armani Hallson KLCC — adjust the figures to your own position.</p>
+
+  <div class="roi-wrap">
+    <div class="roi-grid">
+      <!-- Controls -->
+      <div class="roi-card">
+        <div class="roi-input-group">
+          <div class="roi-slider-header">
+            <label class="roi-slider-label" for="capitalRange">Investment Amount</label>
+            <span class="roi-slider-val" id="capitalLabel">₹2.50 Cr</span>
+          </div>
+          <input type="range" id="capitalRange" min="25000000" max="100000000" value="25000000" step="2500000" oninput="runSimulation()" />
+          <div class="roi-slider-limits"><span>Min: ₹2.5 Cr</span><span>Max: ₹10.0 Cr</span></div>
+        </div>
+        <div class="roi-input-group">
+          <div class="roi-slider-header">
+            <label class="roi-slider-label" for="horizonRange">Holding Period</label>
+            <span class="roi-slider-val" id="horizonLabel">5 Years</span>
+          </div>
+          <input type="range" id="horizonRange" min="1" max="10" value="5" step="1" oninput="runSimulation()" />
+          <div class="roi-slider-limits"><span>1 Year</span><span>10 Years</span></div>
+        </div>
+        <div class="roi-benchmarks">
+          <div class="roi-benchmarks-title">Standard Market Assumptions</div>
+          <div class="roi-badges-grid">
+            <div class="roi-badge-item">FD Interest<span>7.0% p.a.</span></div>
+            <div class="roi-badge-item">FD Income Tax<span>30.0%</span></div>
+            <div class="roi-badge-item">INR Depreciation<span>2.5% p.a.</span></div>
+            <div class="roi-badge-item">MY Prop. Growth<span>3.5% p.a.</span></div>
+            <div class="roi-badge-item">Net Rental Yield<span>5.8% p.a.</span></div>
+            <div class="roi-badge-item">Maintenance<span>1.2% p.a.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visualization -->
+      <div class="roi-card">
+        <div class="roi-chart-header">
+          <div class="roi-chart-title">Investment Growth Projection</div>
+          <div class="roi-legend">
+            <div class="roi-legend-item"><div class="roi-legend-dot fd"></div>Fixed Deposit (Net)</div>
+            <div class="roi-legend-item"><div class="roi-legend-dot my"></div>Armani Hallson KLCC</div>
+          </div>
+        </div>
+        <div class="roi-canvas-container"><canvas id="wealthChart"></canvas></div>
+
+        <div class="roi-metrics-grid">
+          <div class="roi-metric-box fd">
+            <div class="roi-metric-hdr">Fixed Deposit (Net of Tax)</div>
+            <div class="roi-metric-val" id="fdMetric">₹0</div>
+            <div class="roi-metric-sub">Final value after 30% annual tax on interest. Exposed to currency depreciation.</div>
+          </div>
+          <div class="roi-metric-box my">
+            <div class="roi-metric-hdr">Armani Hallson KLCC</div>
+            <div class="roi-metric-val" id="myMetric">₹0</div>
+            <div class="roi-metric-sub">Combined property appreciation and rental income, held in foreign currency.</div>
+          </div>
+        </div>
+
+        <div class="roi-rescue">
+          <div>
+            <div class="roi-rescue-headline" id="rescueSpread">₹0 additional potential</div>
+            <div class="roi-rescue-desc">See the full projection and how a residence at Armani Hallson KLCC compares to your current holdings.</div>
+          </div>
+          <button class="gold-btn font-semibold px-6 py-3 rounded-full whitespace-nowrap" onclick="openLeadModal()">Get My ROI Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTRATION ============ -->
+<section id="register" class="border-t hairline bg-card/40">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 py-28 fade-up">
+    <p class="text-gold text-sm font-medium mb-4 text-center">Exclusive Registration</p>
+    <h2 class="font-serif text-4xl mb-4 text-center text-bone">Register your interest</h2>
+    <p class="text-bonemuted text-center mb-12">Leave your details and our sales team will be in touch with the full brochure and pricing.</p>
+    <form id="registerForm" class="grid sm:grid-cols-2 gap-5" onsubmit="handleRegister(event)">
+      <input required name="name" type="text" placeholder="Full name" class="rounded-lg px-4 py-3.5 text-sm w-full" />
+      <input required name="email" type="email" placeholder="Email address" class="rounded-lg px-4 py-3.5 text-sm w-full" />
+      <input required name="phone" type="tel" placeholder="Phone number" class="rounded-lg px-4 py-3.5 text-sm w-full" />
+      <select required name="unitType" class="rounded-lg px-4 py-3.5 text-sm w-full">
+        <option value="" disabled selected>Preferred unit type</option>
+        <option>Studio</option>
+        <option>2-Bedroom</option>
+        <option>3-Bedroom</option>
+      </select>
+      <button type="submit" class="gold-btn font-semibold px-6 py-3.5 rounded-lg sm:col-span-2">Register Interest</button>
+    </form>
+    <p id="registerSuccess" class="hidden text-sage text-center mt-6 text-sm">Thank you — our team will reach out shortly.</p>
+  </div>
+</section>
+
+<footer class="max-w-7xl mx-auto px-6 lg:px-10 py-10 border-t hairline flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-bonemuted/60">
+  <p>© 2026 Armani Hallson KLCC. All rights reserved.</p>
+  <p>Jalan Ampang, Kuala Lumpur, Malaysia</p>
+</footer>
+
+<!-- ============ ROI LEAD MODAL ============ -->
+<div class="roi-modal-overlay" id="leadModalOverlay">
+  <div class="roi-modal-card">
+    <button class="roi-modal-close" onclick="closeLeadModal()">×</button>
+    <div class="roi-wizard-header">
+      <div class="roi-wizard-step-indicator" id="wizardStepIndicator">Step 1 of 3</div>
+      <div class="roi-wizard-title" id="wizardTitle">What is your main goal?</div>
+      <div class="roi-wizard-progress-bar"><div class="roi-wizard-progress-fill" id="wizardProgressFill"></div></div>
+    </div>
+    <div class="roi-wizard-body">
+      <div class="roi-wizard-step active" id="wizardStep1">
+        <div class="roi-wizard-question">Please select your primary investment objective:</div>
+        <div class="roi-option-cards">
+          <div class="roi-option-card" onclick="selectOption(1, 'Earn high rental income in foreign currency', event)">
+            <div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div class="roi-option-text">Earn high rental income in foreign currency</div>
+          </div>
+          <div class="roi-option-card" onclick="selectOption(1, 'Protect my wealth from currency depreciation', event)">
+            <div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div class="roi-option-text">Protect my wealth from currency depreciation</div>
+          </div>
+          <div class="roi-option-card" onclick="selectOption(1, 'A second home near the KLCC skyline', event)">
+            <div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div class="roi-option-text">A second home near the KLCC skyline</div>
+          </div>
+          <div class="roi-option-card" onclick="selectOption(1, 'I am not sure, I need expert guidance', event)">
+            <div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+            <div class="roi-option-text">I am not sure, I need expert guidance</div>
+          </div>
+        </div>
+      </div>
+      <div class="roi-wizard-step" id="wizardStep2">
+        <div class="roi-wizard-question">How much are you planning to invest?</div>
+        <div class="roi-option-cards">
+          <div class="roi-option-card" onclick="selectOption(2, 'Under ₹2 Crores', event)"><div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div class="roi-option-text">Under ₹2 Crores</div></div>
+          <div class="roi-option-card" onclick="selectOption(2, '₹2 Crores to ₹5 Crores', event)"><div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div class="roi-option-text">₹2 Crores to ₹5 Crores</div></div>
+          <div class="roi-option-card" onclick="selectOption(2, '₹5 Crores to ₹10 Crores', event)"><div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div class="roi-option-text">₹5 Crores to ₹10 Crores</div></div>
+          <div class="roi-option-card" onclick="selectOption(2, 'Above ₹10 Crores', event)"><div class="roi-option-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div class="roi-option-text">Above ₹10 Crores</div></div>
+        </div>
+      </div>
+      <div class="roi-wizard-step" id="wizardStep3">
+        <div class="roi-wizard-question">Where should we send your detailed ROI report?</div>
+        <div class="roi-form-group">
+          <label for="leadName">Full Name</label>
+          <div class="roi-input-icon-wrap">
+            <svg class="roi-input-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <input type="text" id="leadName" class="roi-form-input" placeholder="e.g. Rahul Sharma" />
+          </div>
+          <div class="roi-form-error" id="nameError">Please enter your name</div>
+        </div>
+        <div class="roi-form-group">
+          <label for="leadEmail">Email ID</label>
+          <div class="roi-input-icon-wrap">
+            <svg class="roi-input-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <input type="email" id="leadEmail" class="roi-form-input" placeholder="e.g. rahul@example.com" />
+          </div>
+          <div class="roi-form-error" id="emailError">Please enter a valid email address</div>
+        </div>
+        <div class="roi-form-group">
+          <label for="leadPhone">WhatsApp Number</label>
+          <div class="roi-input-icon-wrap">
+            <svg class="roi-input-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <input type="tel" id="leadPhone" class="roi-form-input" placeholder="e.g. +91 98765 43210" />
+          </div>
+          <div class="roi-form-error" id="phoneError">Please enter a valid phone number</div>
+        </div>
+        <div class="roi-consent">
+          <input type="checkbox" id="leadConsent" checked />
+          <label for="leadConsent">Yes, send the PDF report to my WhatsApp. I also agree to a brief call from an expert to explain the calculations.</label>
+        </div>
+      </div>
+      <div class="roi-wizard-step" id="wizardSuccess">
+        <div class="roi-success-state">
+          <div class="roi-success-circle"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+          <div class="roi-success-title">Request received</div>
+          <div class="roi-success-text">Your personalized ROI report is being prepared. A confirmation has been sent to <strong id="successEmail" style="color:#F2EFEA;">your email</strong>.</div>
+          <div class="roi-next-steps">
+            <div class="roi-next-step-item"><div class="roi-next-step-num">1</div><div class="roi-next-step-txt">PDF report will arrive on WhatsApp shortly</div></div>
+            <div class="roi-next-step-item"><div class="roi-next-step-num">2</div><div class="roi-next-step-txt">An advisor will review your specific goals</div></div>
+            <div class="roi-next-step-item"><div class="roi-next-step-num">3</div><div class="roi-next-step-txt">You will receive a call within 24 hours</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="roi-wizard-footer" id="wizardFooter">
+      <button class="roi-btn-secondary" id="wizardPrevBtn" onclick="prevStep()" style="visibility:hidden;">Back</button>
+      <button class="roi-btn-primary" id="wizardNextBtn" onclick="nextStep()">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const leadEndpoint = 'https://script.google.com/macros/s/AKfycbxxYwGRx9uykJ_dg63R-rKjySTWOHSqDWMI-WHw49QZvDGSWqg6QdcitXC3q5r2HFX14g/exec';
+
+  function sendLead(data) {
+    const payload = new URLSearchParams(data);
+    return fetch(leadEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: payload.toString()
+    });
+  }
+
+  const heroSection = document.getElementById('top');
+  const locationSection = document.getElementById('location');
+  heroSection.after(locationSection);
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Registration form
+  async function handleRegister(e) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.innerText = 'Sending...';
+
+    await sendLead({
+      formType: 'Registration',
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      unitType: formData.get('unitType'),
+      consent: 'Registration form submitted'
+    });
+
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('registerSuccess').classList.remove('hidden');
+  }
+
+  // ===================== ROI CALCULATOR LOGIC =====================
+  let timelineYears = 5;
+  let capitalInvestment = 25000000;
+  let simulatedFDData = [];
+  let simulatedPropertyData = [];
+
+  let wizardCurrentStep = 1;
+  let selectedGoal = '';
+  let selectedExposure = '';
+
+  function formatToIndianCrores(val) {
+    let cr = val / 10000000;
+    return "₹" + cr.toFixed(2) + " Cr";
+  }
+  function formatFullCurrency(val) {
+    return "₹" + Math.round(val).toLocaleString('en-IN');
+  }
+
+  function runSimulation() {
+    const capitalInput = document.getElementById('capitalRange');
+    const horizonInput = document.getElementById('horizonRange');
+
+    capitalInvestment = parseFloat(capitalInput.value);
+    timelineYears = parseInt(horizonInput.value);
+
+    document.getElementById('capitalLabel').innerText = formatToIndianCrores(capitalInvestment);
+    document.getElementById('horizonLabel').innerText = timelineYears + (timelineYears === 1 ? " Year" : " Years");
+
+    const fdRate = 0.07;
+    const taxRate = 0.30;
+    const inrDepreciation = 0.025;
+    const myAppreciation = 0.035;
+    const myNetRentRate = 0.07 - 0.012;
+
+    simulatedFDData = [capitalInvestment];
+    simulatedPropertyData = [capitalInvestment];
+
+    let fdRunningSum = capitalInvestment;
+    let propertyAssetValue = capitalInvestment;
+    let accumulatedRentPool = 0;
+
+    for (let i = 1; i <= timelineYears; i++) {
+      let grossInterest = fdRunningSum * fdRate;
+      let taxSlice = grossInterest * taxRate;
+      let netInterest = grossInterest - taxSlice;
+      fdRunningSum += netInterest;
+      simulatedFDData.push(fdRunningSum);
+
+      propertyAssetValue = propertyAssetValue * (1 + myAppreciation);
+      let activeRentYield = propertyAssetValue * myNetRentRate;
+      accumulatedRentPool += activeRentYield;
+
+      propertyAssetValue = propertyAssetValue * (1 + inrDepreciation);
+      accumulatedRentPool = accumulatedRentPool * (1 + inrDepreciation);
+
+      let combinedPortfolioValue = propertyAssetValue + accumulatedRentPool;
+      simulatedPropertyData.push(combinedPortfolioValue);
+    }
+
+    let finalPropertyVal = propertyAssetValue + accumulatedRentPool;
+    document.getElementById('fdMetric').innerText = formatFullCurrency(fdRunningSum);
+    document.getElementById('myMetric').innerText = formatFullCurrency(finalPropertyVal);
+
+    let spreadDelta = finalPropertyVal - fdRunningSum;
+    document.getElementById('rescueSpread').innerText = formatFullCurrency(spreadDelta) + " additional potential";
+
+    drawChart();
+  }
+
+  let hoverYear = -1;
+
+  function drawChart() {
+    const canvas = document.getElementById('wealthChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const width = rect.width;
+    const height = rect.height;
+    const paddingLeft = 60, paddingRight = 20, paddingTop = 20, paddingBottom = 30;
+    const graphWidth = width - paddingLeft - paddingRight;
+    const graphHeight = height - paddingTop - paddingBottom;
+
+    ctx.clearRect(0, 0, width, height);
+
+    let maxVal = Math.max(...simulatedFDData, ...simulatedPropertyData);
+    let minVal = simulatedFDData[0];
+    let yMaxBound = maxVal * 1.05;
+    let yMinBound = minVal * 0.95;
+
+    function getPixelCoords(yearIndex, value) {
+      let x = paddingLeft + (yearIndex / timelineYears) * graphWidth;
+      let y = height - paddingBottom - ((value - yMinBound) / (yMaxBound - yMinBound)) * graphHeight;
+      return { x, y };
+    }
+
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#2A2A2E';
+    ctx.fillStyle = '#B9B6AE';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+
+    const gridsCount = 4;
+    for (let i = 0; i <= gridsCount; i++) {
+      let ratio = i / gridsCount;
+      let yValue = yMinBound + ratio * (yMaxBound - yMinBound);
+      let yPos = height - paddingBottom - (ratio * graphHeight);
+      ctx.beginPath();
+      ctx.moveTo(paddingLeft, yPos);
+      ctx.lineTo(width - paddingRight, yPos);
+      ctx.stroke();
+      ctx.fillText((yValue / 10000000).toFixed(1) + " Cr", paddingLeft - 10, yPos);
+    }
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    for (let i = 0; i <= timelineYears; i++) {
+      let xPos = paddingLeft + (i / timelineYears) * graphWidth;
+      ctx.beginPath();
+      ctx.moveTo(xPos, height - paddingBottom);
+      ctx.lineTo(xPos, height - paddingBottom + 4);
+      ctx.stroke();
+      let label = i === 0 ? "Start" : "Yr " + i;
+      ctx.fillText(label, xPos, height - paddingBottom + 8);
+    }
+
+    let myGrad = ctx.createLinearGradient(0, paddingTop, 0, height - paddingBottom);
+    myGrad.addColorStop(0, 'rgba(127,169,138,0.18)');
+    myGrad.addColorStop(1, 'rgba(127,169,138,0)');
+    ctx.beginPath();
+    ctx.moveTo(paddingLeft, height - paddingBottom);
+    for (let i = 0; i <= timelineYears; i++) { let pt = getPixelCoords(i, simulatedPropertyData[i]); ctx.lineTo(pt.x, pt.y); }
+    ctx.lineTo(paddingLeft + graphWidth, height - paddingBottom);
+    ctx.closePath();
+    ctx.fillStyle = myGrad;
+    ctx.fill();
+
+    let fdGrad = ctx.createLinearGradient(0, paddingTop, 0, height - paddingBottom);
+    fdGrad.addColorStop(0, 'rgba(201,123,123,0.14)');
+    fdGrad.addColorStop(1, 'rgba(201,123,123,0)');
+    ctx.beginPath();
+    ctx.moveTo(paddingLeft, height - paddingBottom);
+    for (let i = 0; i <= timelineYears; i++) { let pt = getPixelCoords(i, simulatedFDData[i]); ctx.lineTo(pt.x, pt.y); }
+    ctx.lineTo(paddingLeft + graphWidth, height - paddingBottom);
+    ctx.closePath();
+    ctx.fillStyle = fdGrad;
+    ctx.fill();
+
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = '#C97B7B';
+    ctx.beginPath();
+    for (let i = 0; i <= timelineYears; i++) { let pt = getPixelCoords(i, simulatedFDData[i]); if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); }
+    ctx.stroke();
+
+    ctx.strokeStyle = '#7FA98A';
+    ctx.beginPath();
+    for (let i = 0; i <= timelineYears; i++) { let pt = getPixelCoords(i, simulatedPropertyData[i]); if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); }
+    ctx.stroke();
+
+    let fdEnd = getPixelCoords(timelineYears, simulatedFDData[timelineYears]);
+    ctx.fillStyle = '#C97B7B';
+    ctx.beginPath(); ctx.arc(fdEnd.x, fdEnd.y, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#0B0B0C'; ctx.lineWidth = 2; ctx.stroke();
+
+    let myEnd = getPixelCoords(timelineYears, simulatedPropertyData[timelineYears]);
+    ctx.fillStyle = '#7FA98A';
+    ctx.beginPath(); ctx.arc(myEnd.x, myEnd.y, 5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+
+    if (hoverYear >= 0 && hoverYear <= timelineYears) {
+      let lineX = paddingLeft + (hoverYear / timelineYears) * graphWidth;
+      ctx.lineWidth = 1; ctx.strokeStyle = '#3a3a3e'; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(lineX, paddingTop); ctx.lineTo(lineX, height - paddingBottom); ctx.stroke();
+      ctx.setLineDash([]);
+
+      let valFD = simulatedFDData[hoverYear];
+      let valMY = simulatedPropertyData[hoverYear];
+      let ptFD = getPixelCoords(hoverYear, valFD);
+      let ptMY = getPixelCoords(hoverYear, valMY);
+
+      ctx.fillStyle = '#151517'; ctx.strokeStyle = '#C97B7B'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(ptFD.x, ptFD.y, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = '#7FA98A';
+      ctx.beginPath(); ctx.arc(ptMY.x, ptMY.y, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+
+      let tooltipW = 155, tooltipH = 75;
+      let tooltipX = lineX + 10;
+      let tooltipY = (ptFD.y + ptMY.y) / 2 - tooltipH / 2;
+      if (tooltipX + tooltipW > width - paddingRight) tooltipX = lineX - tooltipW - 10;
+      if (tooltipY < paddingTop) tooltipY = paddingTop;
+      if (tooltipY + tooltipH > height - paddingBottom) tooltipY = height - paddingBottom - tooltipH;
+
+      ctx.fillStyle = '#151517'; ctx.strokeStyle = '#2A2A2E'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect(tooltipX, tooltipY, tooltipW, tooltipH, 8); ctx.fill(); ctx.stroke();
+
+      ctx.fillStyle = '#F2EFEA'; ctx.font = 'bold 11px Inter, sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(`End of Year ${hoverYear}`, tooltipX + 10, tooltipY + 18);
+      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Inter, sans-serif';
+      ctx.fillText(`FD:`, tooltipX + 10, tooltipY + 40);
+      ctx.fillStyle = '#C97B7B'; ctx.font = 'bold 11px Inter, sans-serif';
+      ctx.fillText(formatFullCurrency(valFD), tooltipX + 34, tooltipY + 40);
+      ctx.fillStyle = '#B9B6AE'; ctx.font = '10px Inter, sans-serif';
+      ctx.fillText(`Prop:`, tooltipX + 10, tooltipY + 60);
+      ctx.fillStyle = '#7FA98A'; ctx.font = 'bold 11px Inter, sans-serif';
+      ctx.fillText(formatFullCurrency(valMY), tooltipX + 40, tooltipY + 60);
+    }
+  }
+
+  function initCanvasHover() {
+    const canvas = document.getElementById('wealthChart');
+    if (!canvas) return;
+    canvas.addEventListener('mousemove', function (e) {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const paddingLeft = 60, paddingRight = 20;
+      const graphWidth = rect.width - paddingLeft - paddingRight;
+      let relativeX = mouseX - paddingLeft;
+      let stepRatio = relativeX / graphWidth;
+      if (stepRatio >= 0 && stepRatio <= 1) hoverYear = Math.round(stepRatio * timelineYears);
+      else hoverYear = -1;
+      drawChart();
+    });
+    canvas.addEventListener('mouseleave', function () { hoverYear = -1; drawChart(); });
+  }
+
+  // ===================== LEAD MODAL WIZARD =====================
+  function openLeadModal() {
+    document.getElementById('leadModalOverlay').classList.add('active');
+    wizardCurrentStep = 1; selectedGoal = ''; selectedExposure = '';
+    document.querySelectorAll('.roi-option-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('leadName').value = '';
+    document.getElementById('leadEmail').value = '';
+    document.getElementById('leadPhone').value = '';
+    document.getElementById('wizardFooter').style.display = 'flex';
+    updateWizardUI();
+  }
+  function closeLeadModal() { document.getElementById('leadModalOverlay').classList.remove('active'); }
+
+  function selectOption(step, value, evt) {
+    if (step === 1) {
+      selectedGoal = value;
+      document.querySelectorAll('#wizardStep1 .roi-option-card').forEach(c => c.classList.remove('selected'));
+      evt.currentTarget.classList.add('selected');
+    } else if (step === 2) {
+      selectedExposure = value;
+      document.querySelectorAll('#wizardStep2 .roi-option-card').forEach(c => c.classList.remove('selected'));
+      evt.currentTarget.classList.add('selected');
+    }
+    setTimeout(() => nextStep(), 300);
+  }
+
+  function nextStep() {
+    if (wizardCurrentStep === 1) {
+      if (!selectedGoal) return;
+      wizardCurrentStep = 2;
+    } else if (wizardCurrentStep === 2) {
+      if (!selectedExposure) return;
+      wizardCurrentStep = 3;
+    } else if (wizardCurrentStep === 3) {
+      if (validateForm()) submitLeadData();
+      return;
+    }
+    updateWizardUI();
+  }
+  function prevStep() { if (wizardCurrentStep > 1 && wizardCurrentStep <= 3) { wizardCurrentStep--; updateWizardUI(); } }
+
+  function updateWizardUI() {
+    document.querySelectorAll('.roi-wizard-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('wizardStep' + wizardCurrentStep).classList.add('active');
+
+    const fill = document.getElementById('wizardProgressFill');
+    const ind = document.getElementById('wizardStepIndicator');
+    const tit = document.getElementById('wizardTitle');
+    const prevBtn = document.getElementById('wizardPrevBtn');
+    const nextBtn = document.getElementById('wizardNextBtn');
+
+    if (wizardCurrentStep === 1) {
+      fill.style.width = "33.33%"; ind.innerText = "Step 1 of 3"; tit.innerText = "What is your main goal?";
+      prevBtn.style.visibility = "hidden"; nextBtn.style.display = "none";
+    } else if (wizardCurrentStep === 2) {
+      fill.style.width = "66.66%"; ind.innerText = "Step 2 of 3"; tit.innerText = "What is your planned investment budget?";
+      prevBtn.style.visibility = "visible"; nextBtn.style.display = "none";
+    } else if (wizardCurrentStep === 3) {
+      fill.style.width = "100%"; ind.innerText = "Step 3 of 3"; tit.innerText = "Where should we send your ROI report?";
+      prevBtn.style.visibility = "visible"; nextBtn.style.display = "inline-block"; nextBtn.innerText = "Get My Free Report";
+    }
+  }
+
+  function validateForm() {
+    let isValid = true;
+    const name = document.getElementById('leadName');
+    const email = document.getElementById('leadEmail');
+    const phone = document.getElementById('leadPhone');
+    const nameErr = document.getElementById('nameError');
+    const emailErr = document.getElementById('emailError');
+    const phoneErr = document.getElementById('phoneError');
+    nameErr.style.display = "none"; emailErr.style.display = "none"; phoneErr.style.display = "none";
+
+    if (!name.value.trim()) { nameErr.style.display = "block"; isValid = false; }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value.trim())) { emailErr.style.display = "block"; isValid = false; }
+    if (!phone.value.trim() || phone.value.length < 8) { phoneErr.style.display = "block"; isValid = false; }
+    return isValid;
+  }
+
+  async function submitLeadData() {
+    const name = document.getElementById('leadName').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+
+    await sendLead({
+      formType: 'ROI Report',
+      name,
+      email,
+      phone,
+      goal: selectedGoal,
+      budget: selectedExposure,
+      consent: document.getElementById('leadConsent').checked ? 'Agreed' : 'Not agreed'
+    });
+
+    document.getElementById('successEmail').innerText = email;
+    document.querySelectorAll('.roi-wizard-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('wizardSuccess').classList.add('active');
+    document.getElementById('wizardFooter').style.display = "none";
+    document.getElementById('wizardProgressFill').style.width = "100%";
+    document.getElementById('wizardStepIndicator').innerText = "Complete";
+    document.getElementById('wizardTitle').innerText = "Success";
+
+  }
+
+  window.onload = function () {
+    runSimulation();
+    initCanvasHover();
+    window.addEventListener('resize', () => runSimulation());
+  };
+</script>
+</body>
+</html>
