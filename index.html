@@ -6,6 +6,7 @@
 <title>Armani Hallson KLCC | Jalan Ampang, Kuala Lumpur</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="image" href="./bg-optimized.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
@@ -35,6 +36,23 @@
 <style>
   html { scroll-behavior: auto; }
   body { background: #0B0B0C; }
+  body.is-loading { overflow: hidden; }
+  .page-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background: #0B0B0C;
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+  }
+  .page-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .page-loader-mark { text-align: center; }
+  .page-loader-name { color: #F2EFEA; font: 600 2rem/1 'Cormorant Garamond', serif; letter-spacing: 0.03em; }
+  .page-loader-name span { color: #C9A24B; }
+  .page-loader-bar { width: 130px; height: 2px; margin: 18px auto 0; overflow: hidden; background: #2A2A2E; }
+  .page-loader-bar::after { content: ''; display: block; width: 45%; height: 100%; background: #C9A24B; animation: loader-slide 1s ease-in-out infinite; }
+  @keyframes loader-slide { from { transform: translateX(-100%); } to { transform: translateX(330%); } }
   ::selection { background: #C9A24B; color: #0B0B0C; }
 
   .hairline { border-color: #2A2A2E; }
@@ -56,7 +74,7 @@
     background:
       linear-gradient(180deg, rgba(11,11,12,0.2) 0%, rgba(11,11,12,0.5) 58%, #0B0B0C 100%),
       linear-gradient(90deg, rgba(11,11,12,0.62) 0%, rgba(11,11,12,0.18) 62%, rgba(11,11,12,0.35) 100%),
-      url("./bg.png") center / cover no-repeat;
+      url("./bg-optimized.jpg") center / cover no-repeat;
   }
 
   .property-gallery {
@@ -297,6 +315,13 @@
 </head>
 <body class="bg-obsidian text-bone font-sans antialiased">
 
+<div class="page-loader" id="pageLoader" aria-label="Loading page">
+  <div class="page-loader-mark">
+    <div class="page-loader-name">Armani Hallson <span>KLCC</span></div>
+    <div class="page-loader-bar"></div>
+  </div>
+</div>
+
 <!-- ============ NAV ============ -->
 <nav class="nav-glass fixed top-0 left-0 w-full z-50 border-b hairline">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
@@ -348,9 +373,9 @@
     <p class="text-gold text-sm font-medium mb-4">Location</p>
     <h2 class="font-serif text-4xl md:text-5xl mb-12 text-bone">Where is the property?</h2>
     <div class="property-gallery mb-16">
-      <img src="./Screenshot 2026-09-05 at 3.42.37 PM.png" alt="Landscaped pool and gardens at the property" />
-      <img src="./Screenshot 2026-09-05 at 3.41.06 PM.png" alt="Skyline view from the property terrace" />
-      <img src="./Screenshot 2026-09-05 at 3.41.48 PM.png" alt="Luxury interior lounge with city views" />
+      <img src="./property-pool.jpg" alt="Landscaped pool and gardens at the property" />
+      <img src="./property-terrace.jpg" alt="Skyline view from the property terrace" />
+      <img src="./property-lounge.jpg" alt="Luxury interior lounge with city views" />
     </div>
     <div>
       <div>
@@ -612,6 +637,14 @@
 
 <script>
   lucide.createIcons();
+
+  document.body.classList.add('is-loading');
+  function hidePageLoader() {
+    document.body.classList.remove('is-loading');
+    document.getElementById('pageLoader').classList.add('is-hidden');
+  }
+  window.addEventListener('load', hidePageLoader, { once: true });
+  setTimeout(hidePageLoader, 2500);
 
   const leadEndpoint = 'https://script.google.com/macros/s/AKfycbxxYwGRx9uykJ_dg63R-rKjySTWOHSqDWMI-WHw49QZvDGSWqg6QdcitXC3q5r2HFX14g/exec';
 
