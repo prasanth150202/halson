@@ -945,8 +945,18 @@
     document.getElementById('leadPhone').value = '';
     document.getElementById('wizardFooter').style.display = 'flex';
     updateWizardUI();
+    history.pushState({ wizardStep: 1 }, '');
   }
   function closeLeadModal() { document.getElementById('leadModalOverlay').classList.remove('active'); }
+  window.addEventListener('popstate', event => {
+    if (!document.getElementById('leadModalOverlay').classList.contains('active')) return;
+    if (event.state && event.state.wizardStep) {
+      wizardCurrentStep = event.state.wizardStep;
+      updateWizardUI();
+    } else {
+      closeLeadModal();
+    }
+  });
 
   function selectOption(step, value, evt) {
     if (step === 1) {
@@ -972,9 +982,10 @@
       if (validateForm()) submitLeadData();
       return;
     }
+    history.pushState({ wizardStep: wizardCurrentStep }, '');
     updateWizardUI();
   }
-  function prevStep() { if (wizardCurrentStep > 1 && wizardCurrentStep <= 3) { wizardCurrentStep--; updateWizardUI(); } }
+  function prevStep() { if (wizardCurrentStep > 1 && wizardCurrentStep <= 3) history.back(); }
 
   function updateWizardUI() {
     document.querySelectorAll('.roi-wizard-step').forEach(s => s.classList.remove('active'));

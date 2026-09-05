@@ -125,14 +125,17 @@ function draw(fd, property, years) {
   line(fd, '#C97B7B'); line(property, '#7FA98A'); ctx.fillStyle = '#B9B6AE'; ctx.textAlign = 'center'; for (let i = 0; i <= years; i++) ctx.fillText(i ? 'Yr ' + i : 'Start', point(i, min).x, height - 13);
 }
 capital.addEventListener('input', simulate); horizon.addEventListener('input', simulate); window.addEventListener('resize', simulate); document.getElementById('reportButton').addEventListener('click', () => document.getElementById('formWrap').classList.add('visible'));
-function showStep(stepNumber) {
+function showStep(stepNumber, fromPopState) {
   document.querySelectorAll('.step-panel').forEach(panel => panel.classList.toggle('active', panel.id === 'step' + stepNumber));
   document.getElementById('stepIndicator1').classList.toggle('active', stepNumber === 1);
   document.getElementById('stepIndicator2').classList.toggle('active', stepNumber === 2);
   if (stepNumber === 2) { simulate(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  if (!fromPopState) history.pushState({ roiStep: stepNumber }, '');
 }
+history.replaceState({ roiStep: 1 }, '');
+window.addEventListener('popstate', event => showStep(event.state && event.state.roiStep ? event.state.roiStep : 1, true));
 document.getElementById('nextButton').addEventListener('click', () => showStep(2));
-document.getElementById('backButton').addEventListener('click', () => showStep(1));
+document.getElementById('backButton').addEventListener('click', () => history.back());
 document.getElementById('roiForm').addEventListener('submit', async event => { event.preventDefault(); const button = event.currentTarget.querySelector('button'); button.disabled = true; button.textContent = 'Sending...'; const data = new URLSearchParams({ formType:'ROI Report', name:document.getElementById('name').value, email:document.getElementById('email').value, phone:document.getElementById('phone').value, budget:crores(Number(capital.value)), goal:'ROI calculator request', consent:'Agreed' }); await fetch(endpoint, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body:data.toString() }); window.location.href = './thank-you'; });
 simulate();
 </script>
